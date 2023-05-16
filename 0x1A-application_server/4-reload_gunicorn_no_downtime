@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Gracefully reloads Gunicorn.
+
+pid=$(pgrep gunicorn)
+
+if [[ -n "$pid" ]]; then
+    kill -HUP "$pid"
+    echo "Gunicorn reloaded"
+else
+    echo "Gunicorn is not running"
+fi
